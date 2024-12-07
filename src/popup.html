@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserTune Accessibility Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Logo Image -->
+        <img src="logo.png" alt="logo image">
+        <h1>UserTune</h1>
+        <div class="subtitle">
+            <p>Accessibility web browsing, redefined</p>
+        </div>
+        <hr>
+        <div class="login-signup" id="login-signup">
+            <!--toggle between login and signup-->
+            <div class="nav">
+                <ul id="navLinks">
+                    <li><a class="active" id="loginLink">Login</a></li>
+                    <li><a id="signupLink">| Sign Up</a></li>
+                </ul>
+            </div>
+            <!--login-->
+            <div id="login">
+                <form id="loginForm">
+                    <input class="fullInput" type="email" id="email" name="email" placeholder="Enter your email"
+                        required>
+                    <input class="fullInput" type="password" id="password" name="password" placeholder="Enter password"
+                        required>
+                    <button type="submit" class="submitBtn">Login</button>
+                    <div id="errorMessage"></div>
+                </form>
+            </div>
+            <!--signup-->
+            <div id="signup" style="display:none;">
+                <form id="signupForm">
+                    <input class="fullInput" type="text" name="fName" id="fName" placeholder="First Name">
+                    <input class="fullInput" type="text" name="lName" id="lName" placeholder="Last Name">
+                    <input class="fullInput" type="email" id="signupEmail" name="signupEmail"
+                        placeholder="Enter your email" required>
+                    <input class="fullInput" type="password" id="signupPassword" name="signupPassword"
+                        placeholder="Enter password" required>
+                    <fieldset>
+                        <legend>Select your Accessibility Need(s):</legend>
+                        <div class="cb">
+                            <label for="colorBlindnessNeed">Color Blindness </label>
+                            <select name="colorBlindnessNeed" id="colorBlindnessNeed">
+                                <option value="none">None</option>
+                                <option value="protanopia">Red-Blind (Protanopia)</option>
+                                <option value="deuteranopia">Green-Blind (Deuteranopia)</option>
+                                <option value="tritanopia">Blue-Blind (Tritanopia)</option>
+                                <option value="achromatopsia">Monochromacy (Achromatopsia)</option>
+
+                            </select>
+                        </div>
+                        <div class="needItem">
+                            <input type="checkbox" id="elderlyNeed" name="elderlyNeed" value="elderly">
+                            <label for="elderlyNeed">Elderly</label>
+                        </div>
+                        <div class="needItem">
+                            <input type="checkbox" id="dyslexiaNeed" name="dyslexiaNeed" value="dyslexia">
+                            <label for="dyslexiaNeed">Dyslexia</label>
+                        </div>
+                        <div class="needItem">
+                            <input type="checkbox" id="lowVisionNeed" name="lowVisionNeed" value="lowVision">
+                            <label for="lowVisionNeed">Low Vision</label>
+                            <div id="lowVisionNeedSlider" style="display:none;">
+                                <label>Diopter Value:</label>
+                                <div id="diopterNeedOutput">0</div>
+                                <input type="range" id="diopterNeedValue" name="diopterValue" min="-10" max="10"
+                                    step="0.25" value="0">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <button type="submit" class="submitBtn">Sign Up</button>
+                    <div id="errorSignup"></div>
+                </form>
+            </div>
+        </div>
+        <!-- settings -->
+        <div class="c1" id="settings" style="display: none;">
+            <div class="tab">
+                <button type="button" class="tablinks" id="currentSettingsBtn">Current Settings</button>
+                <button type="button" class="tablinks" id="modifySettingsBtn">Modify Settings</button>
+            </div>
+            <br><br>
+
+            <form id="settingsForm">
+                <!-- Current Settings Section -->
+                <div id="CurrentSettings" class="tabcontent" style="display: block;">
+                    <div class="options">
+                        <br>
+                        <div class="cb">
+                            <label for="colorBlindness">Color Blindness </label>
+                            <select name="colorBlindness" id="colorBlindness">
+                                <option value="none">None</option>
+                                <option value="protanopia">Red-Blind (Protanopia)</option>
+                                <option value="deuteranopia">Green-Blind (Deuteranopia)</option>
+                                <option value="tritanopia">Blue-Blind (Tritanopia)</option>
+                                <option value="achromatopsia">Monochromacy (Achromatopsia)</option>
+
+                            </select>
+                        </div>
+                        <label><input type="checkbox" id="dyslexia"> Dyslexia</label><br>
+                        <label><input type="checkbox" id="elderly"> Elderly</label><br>
+                        <label><input type="checkbox" id="lowVision"> Low
+                            Vision</label><br>
+                        <div id="lowVisionSlider" style="display:none;">
+                            <label>Diopter Value:</label>
+                            <div id="diopterOutput">0</div>
+                            <input type="range" id="diopterValue" name="diopterValue" min="-10" max="10" step="0.25"
+                                value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modify Settings Section -->
+                <div id="ModifySettings" class="tabcontent" style="display: none;">
+                    <div class="options">
+                        <br>
+                        <div class="fontStyle">
+                            <label for="fontFamily" class="selectFont">Select font style:</label>
+                            <select id="fontFamily" name="fontlist">
+                                <option value="default">Default</option>
+                                <option value="serif">Serif</option>
+                                <option value="sansSerif">Sans-serif</option>
+                                <option value="monospace">Monospace</option>
+                                <option value="cursive">Cursive</option>
+                                <option value="fantasy">Fantasy</option>
+                            </select>
+                        </div>
+                        <!-- Font Size Adjustment -->
+                        <div class="fontSize">
+                            <div class="adjustSize">
+                                <button type="button" class="fontBtn">A-</button><span>Font Size</span><button
+                                    type="button" class="fontBtn">A+</button>
+                            </div>
+                            <button type="button" class="resetBtn">
+                                <i class="fa-solid fa-rotate-right resetIcon"></i><span>Reset</span>
+                            </button>
+                        </div>
+
+                        <div class="pageZoom">
+                            <button type="button" class="zoomBtn" id="zoomInBtn"><i
+                                    class="fa-solid fa-magnifying-glass-plus"></i> Zoom in</button>
+                            <button type="button" class="zoomBtn" id="zoomOutBtn"><i
+                                    class="fa-solid fa-magnifying-glass-minus"></i> Zoom out</button>
+                            <button type="button" class="resetBtn" id="resetZoomBtn">
+                                <i class="fa-solid fa-rotate-right resetIcon"></i><span>Reset</span>
+                            </button>
+                        </div>
+
+                        <!-- High Contrast Mode -->
+                        <div class="contrast">
+                            <div class="setContrast">
+                                <i class="fa-solid fa-circle-half-stroke contrastIcon"></i>
+                                <div id="highContrastText">High Contrast Mode
+                                </div>
+                            </div>
+                            <div class="toggleBtn">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Dark Mode -->
+                        <div class="darkMode">
+                            <div class="setContrast">
+                                <i class="fa-solid fa-moon moonIcon"></i>
+                                <div id="darkModeText">Dark Mode </div>
+                            </div>
+                            <div class="toggleBtn">
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="mdf-settings-btn">View Live Page</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script for handling tab switching and settings -->
+    <script src="popup.js"></script>
+</body>
+
+</html>
